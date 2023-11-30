@@ -30,6 +30,7 @@ namespace MapLogic
             ChunkMesh.SetTriangles(_meshData.Triangles, 0);
             ChunkMesh.SetColors(_meshData.Colors);
             ChunkMesh.SetNormals(_meshData.Normals);
+            ChunkMesh.indexFormat = _meshData.IndexFormat;
             if (_meshData.Vertices.Count == 0)
             {
                 _chunkMeshRenderer.GetComponent<MeshCollider>().sharedMesh = null;
