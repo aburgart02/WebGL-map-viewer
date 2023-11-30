@@ -2,16 +2,22 @@
 
 public class CameraController : MonoBehaviour
 {
-    private const float MouseSensitivity = 200f;
+    private const float MouseSensitivity = 100f;
     private const float MoveSpeed = 10f;
 
     private float _xRotation;
     private float _yRotation;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         Move();
         Rotate();
+        CursorHandle();
     }
 
     private void Move()
@@ -26,5 +32,13 @@ public class CameraController : MonoBehaviour
         _xRotation -= verticalRotation;
         _yRotation += horizontalRotation;
         transform.rotation = Quaternion.Euler(new Vector3(_xRotation, _yRotation));
+    }
+
+    private void CursorHandle()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
